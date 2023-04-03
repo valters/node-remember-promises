@@ -20,12 +20,16 @@ const example = async () => {
   return Promise.resolve("ok");
 };
 
+const sleep = (waitTimeInMs: number) => new Promise(resolve => setTimeout(resolve, waitTimeInMs));
+
 const main = async () => {
   console.log("starting");
 
   let x = await example();
   console.log("result = " + x);
-  console.log("done");
+
+  await sleep(1);
+  console.log("done: with no errors! (you should not see this actually, unless Promise is properly handled above.)");
 };
 
 main();
